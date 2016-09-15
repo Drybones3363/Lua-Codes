@@ -1,9 +1,9 @@
-math.randomseed(1337)
+math.randomseed(3) --1337,3
 
 local b = 2
 
 local t = {}
-local t2 = {58,9,35,21,54,12,32,51,10,5,23,53,20,1,15,24,28,67,55,26}
+local t2 = {17,30,34,22,11,43,65,68,18,1,35,14,47,71,64,20,4,28,5,66}
 
 local function int(k,q)
 for e,r in pairs (q and t2 or t) do
@@ -27,10 +27,19 @@ end
 print(s)
 
 else
+
+local function get_rand_slot()
+local n
+repeat n = math.random(15) until not int(n)
+table.insert(t,n)
+return n
+end
+
 math.randomseed(os.time())
-print(math.random(15),getnum(true))
+for i=1,5 do
+print(get_rand_slot(),getnum(true))
+end
 
 end
 
 
---to help me select 15 random cards on BTDB
