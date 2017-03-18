@@ -17,4 +17,3 @@ until b:len() < i
 
 im:save('')
 
---magicians can only solve
