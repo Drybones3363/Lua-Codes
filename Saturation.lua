@@ -82,6 +82,32 @@ local function saturatedColor(c,s)
 	return hsvToRGB(hsv)
 end
 
+
+local function saturatedColor2(c,value)
+	local r,g,b = c.r,c.g,c.b
+	local gray = .2989*r+.587*g+.114*b
+	r = -gray*value + r * (1+value)
+	g = -gray*value + g * (1+value)
+	b = -gray*value + b * (1+value)
+	if r > 255 then
+		r = 255
+	elseif r < 0 then
+		r = 0
+	end
+	if g > 255 then
+		g = 255
+	elseif g < 0 then
+		g = 0
+	end
+	if b > 255 then
+		b = 255
+	elseif b < 0 then
+		b = 0
+	end
+	return Color3.new(r,g,b)
+end
+
+
 local function printColor(c)
 	print(255*c.r,255*c.g,255*c.b)
 end
@@ -91,5 +117,7 @@ end
 local c = Color3.fromRGB(150, 85, 85)
 printColor(saturatedColor(c,.9))
 printColor(saturatedColor(c,1.9))
+printColor(saturatedColor2(c,.9))
+printColor(saturatedColor2(c,1.9))
 
 
