@@ -1,4 +1,11 @@
-
+local Color3 = {
+	new = function(r,g,b)
+		return {r = r,g = g,b = b}
+	end,
+	fromRGB = function(r,g,b)
+		return {r = r/255,g = g/255,b = b/255}
+	end,
+}
 
 local function rgbToHSV(c)
 	local r,g,b = c.r,c.g,c.b
